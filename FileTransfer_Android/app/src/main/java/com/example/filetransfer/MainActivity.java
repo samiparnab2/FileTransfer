@@ -87,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
                             public void run()
                             {
                                 connect.post(new Runnable() {
-                                                 @Override
-                                                 public void run() {
-                                                 connect.setEnabled(false);
-                                                 }
-                                             });
+                                    @Override
+                                    public void run() {
+                                        connect.setEnabled(false);
+                                    }
+                                });
 
                                 startReceiving();
                                 isReceiving=false;
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e)
         {
 
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -220,18 +220,18 @@ public class MainActivity extends AppCompatActivity {
         //Log.d("receiveFile","sent signal to start receiving-1");
 
         while(true)
-            {
-                read=socketData.read(fileData,0,fileData.length);
-                fileWriter.write(fileData,0,(int)read);
-                size-=read;
-                completed+=read;
-                updateProgress((int)((completed*100)/totalSize),true);
+        {
+            read=socketData.read(fileData,0,fileData.length);
+            fileWriter.write(fileData,0,(int)read);
+            size-=read;
+            completed+=read;
+            updateProgress((int)((completed*100)/totalSize),true);
 
-                if(size<=0)
-                    break;
-            }
-            fileWriter.close();
-            socketPr.println("1");
+            if(size<=0)
+                break;
+        }
+        fileWriter.close();
+        socketPr.println("1");
     }
     public void updateProgress(Integer s,Boolean doPost)
     {
@@ -242,12 +242,12 @@ public class MainActivity extends AppCompatActivity {
                     progress.setText(s.toString()+" %");
                 }
             });
-        progressBar.post(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setProgress(s);
-            }
-        });
+            progressBar.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressBar.setProgress(s);
+                }
+            });
         }
         else{
             progress.setText(s.toString()+" %");

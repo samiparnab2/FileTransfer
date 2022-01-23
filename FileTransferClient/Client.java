@@ -20,13 +20,17 @@ class ClientRun
     {
         try {
             String command = socketBr.readLine();
-            if (command.equals("folder"))
-                receiveFolder(defaultLocation);
-            else if (command.equals("file"))
-                receiveFile(defaultLocation);
-            else if (command.equals("end"))
-                return;
-
+            if(command.equals("start"))
+            {
+                while(!command.equals("stop"))
+                {
+                    if (command.equals("folder"))
+                        receiveFolder(defaultLocation);
+                    else if (command.equals("file"))
+                        receiveFile(defaultLocation);
+                    command = socketBr.readLine();
+                }
+            }
         }
         catch (Exception e)
         {

@@ -39,12 +39,14 @@
             android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_gravity="center"
+            android:fontFamily="@font/poppins_light"
             android:text="Connect" />
 
         <Button
             android:id="@+id/receive"
             android:layout_width="match_parent"
             android:layout_height="59dp"
+            android:fontFamily="@font/poppins_light"
             android:text="Receive" />
 
 
