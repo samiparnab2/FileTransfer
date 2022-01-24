@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import java.io.*;
-class Main{
+class Server{
 	public static void main(String[] args) {
 		new FileTranserServerUI();
 	}
