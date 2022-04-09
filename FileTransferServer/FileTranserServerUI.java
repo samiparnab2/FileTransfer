@@ -189,7 +189,26 @@ class Server{
 		progressBar.setStringPainted(true);
 		new Thread(){
 			public void run() {
-				socketOutput.println("start");
+				try {
+					PrintWriter out = new PrintWriter(socket.getOutputStream());
+
+
+					out.println("HTTP/1.1 200 OK");
+					out.println("Content-Type: text/html");
+					out.println("\r\n");
+					out.println("<p> Hello world </p>");
+					out.flush();
+					
+
+				} catch (Exception e) {
+					//TODO: handle exception
+				}
+				// String httpsData="<!DOCTYPE html>/n<html>/n				<head>/n				<title>Page Title</title>/n				</head>/n				<body>/n				/n				<h1>This is a Heading</h1>/n				<p>This is a paragraph.</p>/n</body>/n				</html>";
+				String httpsData="HTTP/1.0 200 OK\r\n";
+				BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+				out.write("HTTP/1.0 200 OK\r\n");
+
+				// socketOutput.println(httpsData);
 				for(int i=0;i<selectedFileList.size();i++){
 					File location=selectedFileList.get(i);
 					if(location.isDirectory())
